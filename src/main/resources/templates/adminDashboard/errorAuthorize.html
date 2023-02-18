@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Авторизация</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="loginPage/css/style.css">
+
+</head>
+<body>
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h1 style="color: red; font-size: 45px; font-weight: bold;
+        text-align: center">Ошибка авторизации</h1>
+        </p>
+        <h3 style="color: red; font-size: 25px; text-align: center">Обратитесь к администратору</h3>
+        <button type="button" class="login100-form-btn" style="margin: 0 auto;"
+                th:onclick="|window.location.href='@{/}'|">Вернуться</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="loginPage/js/jquery.min.js"></script>
+<script src="loginPage/js/popper.js"></script>
+<script src="loginPage/js/bootstrap.min.js"></script>
+<script src="loginPage/js/main.js"></script>
+
+</body>
+</html>
