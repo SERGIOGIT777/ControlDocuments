@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -11,10 +11,10 @@
     <meta name="description"
         content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Monster Lite Template by WrapPixel</title>
+    <title>Регистрация IP</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -49,19 +49,19 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" th:href="@{/adminDashboard/dashboard}">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
 
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
 
                         </span>
                     </a>
@@ -103,8 +103,14 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2">Markarn Doe
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark"
+                               href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="assets/images/users/varun.jpg" alt="user"
+                                     class="profile-pic me-2">
+                                <span class="text-white font-medium">
+                                    <b th:text="${people}"></b>
+                                </span>
                             </a>
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -125,6 +131,19 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <!-- User Profile-->
+                        <li class="sidebar-item">
+                            <hr>
+                            <div th:with="variable = ${author}">
+                                <div th:if="${variable.equals('ROLE_ADMIN')}">
+                                    <b>
+                                        <div style="text-align: center;">Администратор</div>
+                                    </b>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="sidebar-item">
+                            <hr>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="index.html" aria-expanded="false"><i class="me-3 far fa-clock fa-fw"
                                     aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
@@ -173,22 +192,22 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Blank Page</h3>
+                        <h3 class="page-title mb-0 p-0">Регистрация IP</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Blank Page</li>
+                                    <li class="breadcrumb-item"><a href="#">Главная</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Белые IP></li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
                         <div class="text-end upgrade-btn">
-                            <a href="https://www.wrappixel.com/templates/monsteradmin/"
-                                class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Upgrade to
-                                Pro</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
+                            <form class="navbar-form navbar-right"
+                                  th:action="@{/logout}" method="post">
+                                <input type="submit" class="btn btn-warning" value="Выйти"/>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -204,11 +223,41 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                This is some text within a card block.
-                            </div>
+                    <div class="col-md-12">
+                        <div class="white-box">
+                            <form class="form-horizontal form-material" method="post"
+                                  action="#" th:action="@{/adminDashboard/saveIpWhite}"
+                                  th:object="${addIpWhite}">
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0" for="ip">
+                                        <b style="font-size: 16px">IP</b></label>
+                                    <div class="col-md-12 border-bottom p-0">
+                                        <input type="text" placeholder="ip"
+                                               name="ip" id="ip"
+                                               th:value="*{ip}"
+                                               class="form-control p-0 border-0"></div>
+                                </div>
+                                <div style="color:red" th:if="${#fields.hasErrors('ip')}" th:errors="*{ip}">
+                                    IP Error
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0" for="person">
+                                        <b style="font-size: 16px">Сотрудник</b></label>
+                                    <div class="col-md-12 border-bottom p-0">
+                                        <input type="text" placeholder="Ф.И.О"
+                                               name="person" id="person"
+                                               th:value="*{person}"
+                                               class="form-control p-0 border-0"></div>
+                                </div>
+                                <div style="color:red" th:if="${#fields.hasErrors('person')}" th:errors="*{person}">
+                                    Person Error
+                                </div>
+                                <div class="form-group mb-4">
+                                    <div class="col-sm-12">
+                                        <input type="submit" class="btn btn-primary btn-lg" value="Записать">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -230,7 +279,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                © 2021 Monster Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a>
+                © 2023 Контроль документов - права программы на Корниченко С.В.
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -246,9 +295,9 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../assets/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="assets/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>

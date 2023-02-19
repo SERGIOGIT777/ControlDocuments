@@ -11,7 +11,6 @@ import com.example.reader.finereader.repository.UsersRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -24,7 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Locale;
 
 
 @Controller
@@ -193,7 +191,7 @@ public class AdminController {
 
     @GetMapping("/saveIpBlack")
     public ModelAndView addIpBlack(@RequestParam String ip) {
-        ModelAndView mav = new ModelAndView("adminDashboard/BlackIp");
+        ModelAndView mav = new ModelAndView("BlackIP");
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String users = user.getUsername();
         List<Users> users1 = usersRepository.findByLogin(users);
@@ -209,7 +207,7 @@ public class AdminController {
                              BindingResult result, Model model) {
 
         if (result.hasErrors()) {
-            return "adminDashboard/BlackIp";
+            return "BlackIP";
         }
 
         deniedWhiteRepository.save(deniedWhite);
