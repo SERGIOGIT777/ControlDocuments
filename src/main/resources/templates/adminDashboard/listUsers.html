@@ -11,8 +11,8 @@
     <meta name="description"
           content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Обновление IP</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
+    <title>Пользователи системы</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/"/>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <!-- Custom CSS -->
@@ -54,14 +54,14 @@
                     <b class="logo-icon">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                        <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
 
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"/>
 
                         </span>
                 </a>
@@ -210,12 +210,12 @@
         <div class="page-breadcrumb">
             <div class="row align-items-center">
                 <div class="col-md-6 col-8 align-self-center">
-                    <h3 class="page-title mb-0 p-0">Обновление IP</h3>
+                    <h3 class="page-title mb-0 p-0">Пользователи системы</h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Главная</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Обновление IP></li>
+                                <li class="breadcrumb-item active" aria-current="page">Пользователи></li>
                             </ol>
                         </nav>
                     </div>
@@ -241,43 +241,58 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
-                <div class="col-md-12">
-                    <div class="white-box">
-                        <form class="form-horizontal form-material" method="post"
-                              action="#" th:action="@{/adminDashboard/updateIp}"
-                              th:object="${updates}">
-                            <div class="form-group mb-4">
-                                <div class="col-md-12 border-bottom p-0">
-                                    <input type="hidden" name="id" id="id"
-                                           th:value="*{id}"
-                                           class="form-control p-0 border-0"></div>
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="box-title">Пользователи</h3>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr class="table-primary">
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Логин</th>
+                                        <th scope="col">Пароль</th>
+                                        <th scope="col">Роль</th>
+                                        <th scope="col">Данные</th>
+                                        <th scope="col">Отдел</th>
+                                        <th scope="col">IP</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="list: ${listUsers}" class="text-dark">
+                                        <td th:text="${list.id}"/>
+                                        <td th:text="${list.login}"/>
+                                        <td th:text="${list.password}"/>
+                                        <td th:text="${list.authority}"/>
+                                        <td th:text="${list.person}"/>
+                                        <td th:text="${list.depart}"/>
+                                        <td th:text="${list.ip}"/>
+                                        <td>
+                                            <form action="#" th:action="@{/adminDashboard/deleteUsers(id=${list.getId()})}"
+                                                  th:method="delete" style="display:inline-block">
+                                                <button type="button" class="btn btn-success"
+                                                        th:onclick="|window.location.href='@{/adminDashboard/updateUsers(id=${list.getId()})}'|">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 120.09 122.88" >
+                                                        <path d="M16.83,25.39C24.55,28,35.28,29.55,47.2,29.55S69.86,28,77.57,25.39c6.77-2.26,11-5,11-7.68s-4.19-5.41-11-7.67C69.86,7.47,59.13,5.88,47.2,5.88S24.55,7.47,16.83,10c-14.36,4.8-14.75,10.42,0,15.35Zm70.1,31.17a33.09,33.09,0,0,1,23.44,9.71v0a33.12,33.12,0,0,1,0,46.86l0,0a33.12,33.12,0,0,1-46.86,0l0,0a33.12,33.12,0,0,1,0-46.86l0,0a33.06,33.06,0,0,1,23.43-9.71Zm1.88,17.52L86,88.12l-2.8-4.22c-6,2.42-9.42,6.42-9.92,12.56-5-8.66-1.95-16.43,4.33-21l-2.86-4.3,14,2.9Zm-4.49,32.13,2.76-14,2.81,4.22c6-2.42,9.42-6.42,9.92-12.56,5,8.66,2,16.43-4.33,21l2.86,4.3-14-2.9ZM106.7,70a28,28,0,1,0,8.19,19.77A27.84,27.84,0,0,0,106.7,70ZM43.92,91C32.69,90.77,22.55,89.12,15,86.6a37.06,37.06,0,0,1-9-4.26v19.18c.53,2.49,4.59,5,10.89,7.11,7.72,2.58,18.45,4.17,30.37,4.17,1.15,0,2.29,0,3.42,0a43.68,43.68,0,0,0,4.32,5.69q-3.78.22-7.74.22c-12.52,0-23.92-1.71-32.23-4.48-4.38-1.47-14.91-6.27-14.91-12V100.3C.06,74.09,0,43.92,0,17.71,0,12.23,5.72,7.58,15,4.49,23.28,1.71,34.68,0,47.2,0S71.12,1.71,79.43,4.49s13.92,6.92,14.84,11.77a2.93,2.93,0,0,1,.17,1V47.35a42.18,42.18,0,0,0-6.08-.64,2.77,2.77,0,0,0,.17-.93h0V26.62a37,37,0,0,1-9.13,4.32c-8.31,2.77-19.71,4.49-32.23,4.49S23.28,33.71,15,30.94a37.44,37.44,0,0,1-9-4.25V46.34c.53,2.49,4.59,5,10.89,7.11C24.55,56,35.28,57.62,47.2,57.62c4.08,0,8-.19,11.74-.54-.62.53-1.22,1.08-1.8,1.64-.22.18-.42.37-.62.56l0,0,0,0,0,0a43.9,43.9,0,0,0-3.55,4c-1.89.08-3.8.12-5.75.12C34.68,63.49,23.28,61.78,15,59a37.06,37.06,0,0,1-9-4.25V73.93c.53,2.49,4.59,5,10.89,7.11,7.05,2.35,16.61,3.88,27.31,4.13a42.92,42.92,0,0,0-.24,4.55c0,.44,0,.88,0,1.32Z"/>
+                                                    </svg>
+                                                </button>
+                                                <!--                    <input type="image" class="btn btn-danger" src="/assets/trash.svg" alt="Удалить">-->
+                                                <button type="submit" class="btn btn-danger">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-trash2-fill" viewBox="0 0 110.61 122.88">
+                                                        <path d="M39.27,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Zm63.6-19.86L98,103a22.29,22.29,0,0,1-6.33,14.1,19.41,19.41,0,0,1-13.88,5.78h-45a19.4,19.4,0,0,1-13.86-5.78l0,0A22.31,22.31,0,0,1,12.59,103L7.74,38.78H0V25c0-3.32,1.63-4.58,4.84-4.58H27.58V10.79A10.82,10.82,0,0,1,38.37,0H72.24A10.82,10.82,0,0,1,83,10.79v9.62h23.35a6.19,6.19,0,0,1,1,.06A3.86,3.86,0,0,1,110.59,24c0,.2,0,.38,0,.57V38.78Zm-9.5.17H17.24L22,102.3a12.82,12.82,0,0,0,3.57,8.1l0,0a10,10,0,0,0,7.19,3h45a10.06,10.06,0,0,0,7.19-3,12.8,12.8,0,0,0,3.59-8.1L93.37,39ZM71,20.41V12.05H39.64v8.36ZM61.87,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Z"/>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="form-group mb-4">
-                                <label class="col-md-12 p-0" for="ip">
-                                    <b style="font-size: 16px">IP</b></label>
-                                <div class="col-md-12 border-bottom p-0">
-                                    <input type="text" name="ip" id="ip"
-                                           th:value="*{ip}"
-                                           class="form-control p-0 border-0"></div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <label class="col-md-12 p-0" for="person">
-                                    <b style="font-size: 16px">Сотрудник</b></label>
-                                <div class="col-md-12 border-bottom p-0">
-                                    <input type="text" name="person" id="person"
-                                           th:value="*{person}"
-                                           class="form-control p-0 border-0"></div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">
-                                    <input type="submit" class="btn btn-primary btn-lg" value="Обновить">
-                                    <button type="button" class="btn btn-primary btn-lg"
-                                            th:onclick="|window.location.href='@{/adminDashboard/dashboard}'|">
-                                        Вернуться
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+
+                        </div>
                     </div>
                 </div>
             </div>

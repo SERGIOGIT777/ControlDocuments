@@ -11,8 +11,8 @@
     <meta name="description"
           content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Обновление IP</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
+    <title>Обновление документов</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/"/>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <!-- Custom CSS -->
@@ -54,14 +54,14 @@
                     <b class="logo-icon">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                        <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
 
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"/>
 
                         </span>
                 </a>
@@ -210,12 +210,12 @@
         <div class="page-breadcrumb">
             <div class="row align-items-center">
                 <div class="col-md-6 col-8 align-self-center">
-                    <h3 class="page-title mb-0 p-0">Обновление IP</h3>
+                    <h3 class="page-title mb-0 p-0">Обновление документов</h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Главная</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Обновление IP></li>
+                                <li class="breadcrumb-item active" aria-current="page">Документы></li>
                             </ol>
                         </nav>
                     </div>
@@ -241,43 +241,102 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
-                <div class="col-md-12">
-                    <div class="white-box">
-                        <form class="form-horizontal form-material" method="post"
-                              action="#" th:action="@{/adminDashboard/updateIp}"
-                              th:object="${updates}">
-                            <div class="form-group mb-4">
-                                <div class="col-md-12 border-bottom p-0">
-                                    <input type="hidden" name="id" id="id"
-                                           th:value="*{id}"
-                                           class="form-control p-0 border-0"></div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <label class="col-md-12 p-0" for="ip">
-                                    <b style="font-size: 16px">IP</b></label>
-                                <div class="col-md-12 border-bottom p-0">
-                                    <input type="text" name="ip" id="ip"
-                                           th:value="*{ip}"
-                                           class="form-control p-0 border-0"></div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <label class="col-md-12 p-0" for="person">
-                                    <b style="font-size: 16px">Сотрудник</b></label>
-                                <div class="col-md-12 border-bottom p-0">
-                                    <input type="text" name="person" id="person"
-                                           th:value="*{person}"
-                                           class="form-control p-0 border-0"></div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <div class="col-sm-12">
-                                    <input type="submit" class="btn btn-primary btn-lg" value="Обновить">
-                                    <button type="button" class="btn btn-primary btn-lg"
-                                            th:onclick="|window.location.href='@{/adminDashboard/dashboard}'|">
-                                        Вернуться
-                                    </button>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="form-horizontal form-material" method="post"
+                                  action="#" th:action="@{/adminDashboard/executeDocuments}"
+                                  th:object="${execute}">
+                                <div class="form-group mb-4">
+                                    <div class="col-md-12 border-bottom p-0">
+                                        <input type="hidden" name="id" id="id"
+                                               th:value="*{id}"
+                                               class="form-control p-0 border-0"></div>
                                 </div>
-                            </div>
-                        </form>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0">
+                                        <b style="font-size: 16px; color: darkblue">Содержание документы</b></label>
+                                    <div style="font-size: 12px" th:text="${assignment}"></div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0">
+                                        <b style="font-size: 16px; color: darkblue">Корреспондент</b></label>
+                                    <div style="font-size: 12px" th:text="${correspondent}"></div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0">
+                                        <b style="font-size: 16px; color: darkblue">Регистрационный номер</b></label>
+                                    <div style="font-size: 12px" th:text="${reg_number}"></div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0">
+                                        <b style="font-size: 16px; color: darkblue">Дата</b></label>
+                                    <div style="font-size: 12px" th:text="${dates}"></div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0">
+                                        <b style="font-size: 16px; color: darkblue">Автор резолюции</b></label>
+                                    <div style="font-size: 12px" th:text="${author_resolution}"></div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0">
+                                        <b style="font-size: 16px; color: darkblue">Резолюция</b></label>
+                                    <div style="font-size: 12px" th:text="${resolution}"></div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0">
+                                        <b style="font-size: 16px; color: darkblue">Плановая дата</b></label>
+                                    <div style="font-size: 12px" th:text="${data_plane}"></div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0">
+                                        <b style="font-size: 16px; color: darkblue">Исполнитель</b></label>
+                                    <div style="font-size: 12px" th:text="${executor}"></div>
+                                </div>
+                                <hr style="height: 2px"/>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0" for="data_fact">
+                                        <b style="font-size: 16px">Фактическая дата исполнения</b></label>
+                                    <div class="col-md-12 border-bottom p-0">
+                                        <input type="date" class="form-control p-0 border-0"
+                                               data-date-format="dd.MM.yyyy"
+                                               th:value="*{data_fact}"
+                                               name="data_fact" id="data_fact">
+                                    </div>
+                                </div>
+                                <div style="color:red" th:if="${#fields.hasErrors('data_fact')}"
+                                     th:errorclass="error" th:errors="*{data_fact}"></div>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0" for="reg_answer">
+                                        <b style="font-size: 16px">Регистрационный номер ответа</b></label>
+                                    <div class="col-md-12 border-bottom p-0">
+                                        <input type="text" class="form-control p-0 border-0"
+                                               th:value="*{reg_answer}"
+                                               placeholder="Номер ответа .... "
+                                               name="reg_answer" id="reg_answer">
+                                    </div>
+                                </div>
+                                <div style="color:red" th:if="${#fields.hasErrors('reg_answer')}"
+                                     th:errorclass="error" th:errors="*{reg_answer}"></div>
+                                <div class="form-group mb-4">
+                                    <label class="col-md-12 p-0" for="answer">
+                                        <b style="font-size: 16px">Ответ</b></label>
+                                    <div class="col-md-12 border-bottom p-0">
+                                        <input type="text" class="form-control p-0 border-0"
+                                               th:value="*{answer}"
+                                               placeholder="Ответ .... "
+                                               name="answer" id="answer">
+                                    </div>
+                                </div>
+                                <div style="color:red" th:if="${#fields.hasErrors('answer')}"
+                                     th:errorclass="error" th:errors="*{answer}"></div>
+                                <div class="form-group mb-4">
+                                    <div class="col-sm-12">
+                                        <input type="submit" class="btn btn-primary btn-lg" value="Обновить">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -39,14 +39,8 @@ public class Users {
     @Column(name = "person")
     private String person;
 
-    @Column(name = "stars")
-    private String stars;
-
     @Column(name = "depart")
     private String depart;
-
-    @Column(name = "number")
-    private String number;
 
     @NotEmpty(message = "Поле должно быть заполнено")
     @Pattern(regexp = "^([0-1]?\\d?\\d|2[0-4]\\d|25[0-5])(\\.([0-1]?\\d?\\d|2[0-4]\\d|25[0-5])){3}$")

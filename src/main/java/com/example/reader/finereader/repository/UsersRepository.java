@@ -30,13 +30,12 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 
     @Modifying
     @Query(value = "update Users c set c.login=:login, c.password=:password, c.authority=:authority," +
-            "c.person=:person, c.stars=:stars, c.depart=:depart, c.number=:number, c.ip=:ip where c.id=:id")
+            "c.person=:person, c.depart=:depart, c.ip=:ip where c.id=:id")
     void updateUsers(@Param(value = "id") long id,
                      @Param(value = "login") String login,
                      @Param(value = "password") String password,
                      @Param(value = "authority") String authority,
                      @Param(value = "person") String person,
-                     @Param(value = "stars") String stars,
                      @Param(value = "depart") String depart,
-                     @Param(value = "number") String number, @Param(value = "ip") String ip);
+                     @Param(value = "ip") String ip);
 }

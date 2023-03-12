@@ -35,7 +35,7 @@ public class Control {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull(message = "Дата не может быть пустой")
-    @Column(name = "data")
+    @Column(name = "dates")
     private LocalDate dates;
 
     @NotEmpty(message = "Поле должно быть заполнено")
@@ -49,7 +49,7 @@ public class Control {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "data_plane")
-    private LocalDate dates_plane;
+    private LocalDate data_plane;
 
     @Size(min=2, max = 100, message = "Размер поля исполнитель не менее 2 знаков и не более 100")
     @Column(name = "executor")
@@ -57,7 +57,7 @@ public class Control {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "data_fact")
-    private LocalDate dates_fact;
+    private LocalDate data_fact;
 
     @Size(min=2, max = 100, message = "Размер поля регистрационный номер ответа не менее 2 знаков и не более 100")
     @Column(name = "reg_answer")
