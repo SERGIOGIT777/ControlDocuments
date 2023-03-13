@@ -131,16 +131,16 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     <!-- User Profile-->
-                    <li class="sidebar-item">
-                        <hr>
-                        <div th:with="variable = ${author}">
-                            <div th:if="${variable.equals('ROLE_ADMIN')}">
-                                <b>
-                                    <div style="text-align: center;">Администратор</div>
-                                </b>
-                            </div>
-                        </div>
-                    </li>
+<!--                    <li class="sidebar-item">-->
+<!--                        <hr>-->
+<!--                        <div th:with="variable = ${author}">-->
+<!--                            <div th:if="${variable.equals('ROLE_ADMIN')}">-->
+<!--                                <b>-->
+<!--                                    <div style="text-align: center;">Администратор</div>-->
+<!--                                </b>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
                     <li class="sidebar-item">
                         <hr>
                     </li>
@@ -246,7 +246,7 @@
                         <div class="card-body">
                             <form class="form-horizontal form-material" method="post"
                                   action="#" th:action="@{/adminDashboard/saveUsers}"
-                                  th:object="${addPeople}">
+                                  th:object="${addPerson}">
                                 <div class="form-group mb-4">
                                     <label class="col-md-12 p-0" for="login">
                                         <b style="font-size: 16px">Логин</b></label>
@@ -287,7 +287,7 @@
                                                 class="form-select shadow-none p-0 border-0 form-control-line"
                                                 name="authority" th:value="*{authority}">
                                             <option value="ROLE_ADMIN">администратор</option>
-                                            <option value="ROLE_MODERATOR">модератор</option>
+                                            <option value="ROLE_CONTROL">контролер</option>
                                             <option value="ROLE_USER">пользователь</option>
                                         </select>
                                     </div>
@@ -300,7 +300,7 @@
                                     <div class="col-md-12 border-bottom p-0">
                                         <input type="text" class="form-control p-0 border-0" th:value="*{person}"
                                                placeholder="Ф.И.О."
-                                               name="name" id="name">
+                                               name="person" id="name">
                                     </div>
                                 </div>
                                 <div style="color:red" th:if="${#fields.hasErrors('person')}"
@@ -311,7 +311,7 @@
                                     <div class="col-md-12 border-bottom p-0">
                                         <select id="department"
                                                 class="form-select shadow-none p-0 border-0 form-control-line"
-                                                name="department" th:value="*{depart}">
+                                                name="depart" th:value="*{depart}">
                                             <option value="1 отдел">первый</option>
                                             <option value="2 отдел">второй</option>
                                             <option value="3 отдел">третий</option>

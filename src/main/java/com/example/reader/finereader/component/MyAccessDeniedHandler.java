@@ -31,8 +31,8 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
         if (request.isUserInRole("ROLE_ADMIN")) {
             response.sendRedirect(request.getContextPath() + "/adminDashboard/dashboard");
         }
-        if (request.isUserInRole("ROLE_MODERATOR")) {
-            response.sendRedirect(request.getContextPath() + "/moderDashboard/profile");
+        if (request.isUserInRole("ROLE_CONTROL")) {
+            response.sendRedirect(request.getContextPath() + "/controlDashboard/dashboard");
         }
 
     }

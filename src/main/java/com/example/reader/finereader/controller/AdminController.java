@@ -295,12 +295,12 @@ public class AdminController {
         List<Users> users1 = usersRepository.findByLogin(users);
         mav.addObject("people", users1.get(0).getPerson());
         mav.addObject("author", users1.get(0).getAuthority());
-        mav.addObject("addPeople", new Users());
+        mav.addObject("addPerson", new Users());
         return mav;
     }
 
     @PostMapping("/saveUsers")
-    public String saveUsers(@ModelAttribute("addPeople") @Valid Users users,
+    public String saveUsers(@ModelAttribute("addPerson") @Valid Users users,
                             BindingResult result, Model model) {
 
         if (result.hasErrors()) {

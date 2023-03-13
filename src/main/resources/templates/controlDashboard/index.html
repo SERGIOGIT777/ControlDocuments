@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Monsterlite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Monster admin lite design, Monster admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+          content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Панель администратора</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/"/>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <!-- Custom CSS -->
+    <link href="assets/plugins/chartist/dist/chartist.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script>
+        function printDiv1() {
+            var divContents = document.getElementById("GFG1").innerHTML;
+            var a = window.open('', '', 'height=500, width=500');
+            a.document.write('<html>');
+            a.document.write('<body > <h1>Документы <br>');
+            a.document.write(divContents);
+            a.document.write('</body></html>');
+            a.window.print();
+            a.document.close();
+        }
+    </script>
+
+    <script>
+        function printDiv1() {
+            var divContents = document.getElementById("GFG2").innerHTML;
+            var a = window.open('', '', 'height=500, width=500');
+            a.document.write('<html>');
+            a.document.write('<body > <h1>Документы <br>');
+            a.document.write(divContents);
+            a.document.write('</body></html>');
+            a.window.print();
+            a.document.close();
+        }
+    </script>
+
+</head>
+
+<body>
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <header class="topbar" data-navbarbg="skin6">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <div class="navbar-header" data-logobg="skin6">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <a class="navbar-brand" th:href="@{/controlDashboard/dashboard}">
+                    <!-- Logo icon -->
+                    <b class="logo-icon">
+                        <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                        <!-- Dark Logo icon -->
+                        <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo"/>
+
+                    </b>
+                    <!--End Logo icon -->
+                    <!-- Logo text -->
+                    <span class="logo-text">
+                            <!-- dark Logo text -->
+                            <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"/>
+
+                        </span>
+                </a>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- toggle and nav items -->
+                <!-- ============================================================== -->
+                <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
+                   href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Logo -->
+            <!-- ============================================================== -->
+            <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+
+                <!-- ============================================================== -->
+                <!-- toggle and nav items -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav me-auto mt-md-0 ">
+                    <!-- ============================================================== -->
+                    <!-- Search -->
+                    <!-- ============================================================== -->
+
+<!--                    <li class="nav-item hidden-sm-down">-->
+<!--                        <form class="app-search ps-3">-->
+<!--                            <input type="text" class="form-control" placeholder="Search for..."> <a-->
+<!--                                class="srh-btn"><i class="ti-search"></i></a>-->
+<!--                        </form>-->
+<!--                    </li>-->
+                </ul>
+
+                <!-- ============================================================== -->
+                <!-- Right side toggle and nav items -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav">
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark"
+                           href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="assets/images/users/varun.jpg" alt="user"
+                                 class="profile-pic me-2">
+                            <span class="text-white font-medium">
+                                    <b th:text="${people}"></b>
+                                </span>
+                        </a>
+                        <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <aside class="left-sidebar" data-sidebarbg="skin6">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <!-- User Profile-->
+                    <li class="sidebar-item">
+                        <hr>
+                        <div th:with="variable = ${author}">
+                            <div th:if="${variable.equals('ROLE_CONTROL')}">
+                                <b>
+                                    <div style="text-align: center;">Контролер</div>
+                                </b>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="sidebar-item">
+                        <hr>
+                    </li>
+                    <li class="sidebar-item pt-2">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                           th:href="@{/controlDashboard/dashboard}"
+                           aria-expanded="false">
+                            <i class="me-3 far fa-clock" aria-hidden="true"></i>
+                            <span class="hide-menu">Панель</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                           th:href="@{/controlDashboard/profile}"
+                           aria-expanded="false">
+                            <i class="me-3 fa fa-user" aria-hidden="true"></i><span
+                                class="hide-menu">Профиль</span></a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                           th:href="@{/controlDashboard/listDocument}"
+                           aria-expanded="false">
+                            <i class="me-3 fa fa-table" aria-hidden="true"></i><span
+                                class="hide-menu">Документы</span></a>
+                    </li>
+                    <li class="sidebar-item pt-2">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                           th:href="@{/controlDashboard/saveDocument}"
+                           aria-expanded="false">
+                            <i class="me-3 far fa-address-book" aria-hidden="true"></i>
+                            <span class="hide-menu">Добавить документ</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </aside>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row align-items-center">
+                <div class="col-md-6 col-8 align-self-center">
+                    <h3 class="page-title mb-0 p-0">Панель администратора</h3>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Главная</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Панель администратора</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-6 col-4 align-self-center">
+                    <div class="text-end upgrade-btn">
+                        <form class="navbar-form navbar-right"
+                              th:action="@{/logout}" method="post">
+                            <input type="submit" class="btn btn-warning" value="Выйти"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Sales chart -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Всего документов</h4>
+                            <div class="text-end">
+                                <h2 class="font-light mb-0"><i class="ti-arrow-up text-success"
+                                                               th:text="${countControl}"></i></h2>
+                                <span class="text-muted">документов</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Срок до 10 дней</h4>
+                            <div class="text-end">
+                                <h2 class="font-light mb-0"><i class="ti-arrow-up text-danger"
+                                                               th:text="${countNowControl}"></i></h2>
+                                <span class="text-muted">документов</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Просроченные</h4>
+                            <div class="text-end">
+                                <h2 class="font-light mb-0"><i class="ti-arrow-up text-danger"
+                                                               th:text="${countErrorControl}"></i></h2>
+                                <span class="text-muted">документов</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- Sales chart -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <!-- column -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Просроченные документы</h4>
+                            <div>
+                                <h3><b>Функционал кнопок</b></h3>
+                                <button type="submit" class="btn btn-danger" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-trash2-fill"
+                                         viewBox="0 0 110.61 122.88">
+                                        <path d="M39.27,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Zm63.6-19.86L98,103a22.29,22.29,0,0,1-6.33,14.1,19.41,19.41,0,0,1-13.88,5.78h-45a19.4,19.4,0,0,1-13.86-5.78l0,0A22.31,22.31,0,0,1,12.59,103L7.74,38.78H0V25c0-3.32,1.63-4.58,4.84-4.58H27.58V10.79A10.82,10.82,0,0,1,38.37,0H72.24A10.82,10.82,0,0,1,83,10.79v9.62h23.35a6.19,6.19,0,0,1,1,.06A3.86,3.86,0,0,1,110.59,24c0,.2,0,.38,0,.57V38.78Zm-9.5.17H17.24L22,102.3a12.82,12.82,0,0,0,3.57,8.1l0,0a10,10,0,0,0,7.19,3h45a10.06,10.06,0,0,0,7.19-3,12.8,12.8,0,0,0,3.59-8.1L93.37,39ZM71,20.41V12.05H39.64v8.36ZM61.87,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Z"/>
+                                    </svg>
+                                    Удалить документ
+                                </button>
+                                <button type="button" class="btn btn-success" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         viewBox="0 0 120.09 122.88">
+                                        <path d="M16.83,25.39C24.55,28,35.28,29.55,47.2,29.55S69.86,28,77.57,25.39c6.77-2.26,11-5,11-7.68s-4.19-5.41-11-7.67C69.86,7.47,59.13,5.88,47.2,5.88S24.55,7.47,16.83,10c-14.36,4.8-14.75,10.42,0,15.35Zm70.1,31.17a33.09,33.09,0,0,1,23.44,9.71v0a33.12,33.12,0,0,1,0,46.86l0,0a33.12,33.12,0,0,1-46.86,0l0,0a33.12,33.12,0,0,1,0-46.86l0,0a33.06,33.06,0,0,1,23.43-9.71Zm1.88,17.52L86,88.12l-2.8-4.22c-6,2.42-9.42,6.42-9.92,12.56-5-8.66-1.95-16.43,4.33-21l-2.86-4.3,14,2.9Zm-4.49,32.13,2.76-14,2.81,4.22c6-2.42,9.42-6.42,9.92-12.56,5,8.66,2,16.43-4.33,21l2.86,4.3-14-2.9ZM106.7,70a28,28,0,1,0,8.19,19.77A27.84,27.84,0,0,0,106.7,70ZM43.92,91C32.69,90.77,22.55,89.12,15,86.6a37.06,37.06,0,0,1-9-4.26v19.18c.53,2.49,4.59,5,10.89,7.11,7.72,2.58,18.45,4.17,30.37,4.17,1.15,0,2.29,0,3.42,0a43.68,43.68,0,0,0,4.32,5.69q-3.78.22-7.74.22c-12.52,0-23.92-1.71-32.23-4.48-4.38-1.47-14.91-6.27-14.91-12V100.3C.06,74.09,0,43.92,0,17.71,0,12.23,5.72,7.58,15,4.49,23.28,1.71,34.68,0,47.2,0S71.12,1.71,79.43,4.49s13.92,6.92,14.84,11.77a2.93,2.93,0,0,1,.17,1V47.35a42.18,42.18,0,0,0-6.08-.64,2.77,2.77,0,0,0,.17-.93h0V26.62a37,37,0,0,1-9.13,4.32c-8.31,2.77-19.71,4.49-32.23,4.49S23.28,33.71,15,30.94a37.44,37.44,0,0,1-9-4.25V46.34c.53,2.49,4.59,5,10.89,7.11C24.55,56,35.28,57.62,47.2,57.62c4.08,0,8-.19,11.74-.54-.62.53-1.22,1.08-1.8,1.64-.22.18-.42.37-.62.56l0,0,0,0,0,0a43.9,43.9,0,0,0-3.55,4c-1.89.08-3.8.12-5.75.12C34.68,63.49,23.28,61.78,15,59a37.06,37.06,0,0,1-9-4.25V73.93c.53,2.49,4.59,5,10.89,7.11,7.05,2.35,16.61,3.88,27.31,4.13a42.92,42.92,0,0,0-.24,4.55c0,.44,0,.88,0,1.32Z"/>
+                                    </svg>
+                                    Обновить документ
+                                </button>
+                                <button type="button" class="btn btn-primary" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-database-up" viewBox="0 0 16 16">
+                                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0Z"/>
+                                        <path d="M12.096 6.223A4.92 4.92 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.493 4.493 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.525 4.525 0 0 1-.813-.927C8.5 14.992 8.252 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.552 4.552 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10c.262 0 .52-.008.774-.024a4.525 4.525 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777ZM3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4Z"/>
+                                    </svg>
+                                    Исполнить документ
+                                </button>
+                                <button type="button" class="btn btn-secondary" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                    </svg>
+                                    Перейти на документ
+                                </button>
+                            </div>
+                            <div class="table-responsive mt-5">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr class="table-primary">
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Корреспондент</th>
+                                        <th scope="col">Регистрационный номер</th>
+                                        <th scope="col">Дата</th>
+                                        <th scope="col">Автор резолюции</th>
+                                        <th scope="col">Содержание</th>
+                                        <th scope="col">Срок исполнения</th>
+                                        <th scope="col">Исполнитель</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="list: ${listError}" class="text-dark">
+                                        <td th:text="${list.id}"/>
+                                        <td th:text="${list.correspondent}"/>
+                                        <td th:text="${list.reg_number}"/>
+                                        <td th:text="${list.dates}"/>
+                                        <td th:text="${list.author_resolution}"/>
+                                        <td th:text="${list.resolution}"/>
+                                        <td th:text="${list.data_plane}"/>
+                                        <td th:text="${list.executor}"/>
+                                        <td>
+                                            <form action="#"
+                                                  th:action="@{/controlDashboard/deleteDocs(id=${list.getId()})}"
+                                                  th:method="delete" style="display:inline-block">
+                                                <button type="submit" class="btn btn-danger">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-trash2-fill"
+                                                         viewBox="0 0 110.61 122.88">
+                                                        <path d="M39.27,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Zm63.6-19.86L98,103a22.29,22.29,0,0,1-6.33,14.1,19.41,19.41,0,0,1-13.88,5.78h-45a19.4,19.4,0,0,1-13.86-5.78l0,0A22.31,22.31,0,0,1,12.59,103L7.74,38.78H0V25c0-3.32,1.63-4.58,4.84-4.58H27.58V10.79A10.82,10.82,0,0,1,38.37,0H72.24A10.82,10.82,0,0,1,83,10.79v9.62h23.35a6.19,6.19,0,0,1,1,.06A3.86,3.86,0,0,1,110.59,24c0,.2,0,.38,0,.57V38.78Zm-9.5.17H17.24L22,102.3a12.82,12.82,0,0,0,3.57,8.1l0,0a10,10,0,0,0,7.19,3h45a10.06,10.06,0,0,0,7.19-3,12.8,12.8,0,0,0,3.59-8.1L93.37,39ZM71,20.41V12.05H39.64v8.36ZM61.87,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Z"/>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                            <button type="button" class="btn btn-success"
+                                                    th:onclick="|window.location.href='@{/controlDashboard/updateDocuments(id=${list.getId()})}'|">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     viewBox="0 0 120.09 122.88">
+                                                    <path d="M16.83,25.39C24.55,28,35.28,29.55,47.2,29.55S69.86,28,77.57,25.39c6.77-2.26,11-5,11-7.68s-4.19-5.41-11-7.67C69.86,7.47,59.13,5.88,47.2,5.88S24.55,7.47,16.83,10c-14.36,4.8-14.75,10.42,0,15.35Zm70.1,31.17a33.09,33.09,0,0,1,23.44,9.71v0a33.12,33.12,0,0,1,0,46.86l0,0a33.12,33.12,0,0,1-46.86,0l0,0a33.12,33.12,0,0,1,0-46.86l0,0a33.06,33.06,0,0,1,23.43-9.71Zm1.88,17.52L86,88.12l-2.8-4.22c-6,2.42-9.42,6.42-9.92,12.56-5-8.66-1.95-16.43,4.33-21l-2.86-4.3,14,2.9Zm-4.49,32.13,2.76-14,2.81,4.22c6-2.42,9.42-6.42,9.92-12.56,5,8.66,2,16.43-4.33,21l2.86,4.3-14-2.9ZM106.7,70a28,28,0,1,0,8.19,19.77A27.84,27.84,0,0,0,106.7,70ZM43.92,91C32.69,90.77,22.55,89.12,15,86.6a37.06,37.06,0,0,1-9-4.26v19.18c.53,2.49,4.59,5,10.89,7.11,7.72,2.58,18.45,4.17,30.37,4.17,1.15,0,2.29,0,3.42,0a43.68,43.68,0,0,0,4.32,5.69q-3.78.22-7.74.22c-12.52,0-23.92-1.71-32.23-4.48-4.38-1.47-14.91-6.27-14.91-12V100.3C.06,74.09,0,43.92,0,17.71,0,12.23,5.72,7.58,15,4.49,23.28,1.71,34.68,0,47.2,0S71.12,1.71,79.43,4.49s13.92,6.92,14.84,11.77a2.93,2.93,0,0,1,.17,1V47.35a42.18,42.18,0,0,0-6.08-.64,2.77,2.77,0,0,0,.17-.93h0V26.62a37,37,0,0,1-9.13,4.32c-8.31,2.77-19.71,4.49-32.23,4.49S23.28,33.71,15,30.94a37.44,37.44,0,0,1-9-4.25V46.34c.53,2.49,4.59,5,10.89,7.11C24.55,56,35.28,57.62,47.2,57.62c4.08,0,8-.19,11.74-.54-.62.53-1.22,1.08-1.8,1.64-.22.18-.42.37-.62.56l0,0,0,0,0,0a43.9,43.9,0,0,0-3.55,4c-1.89.08-3.8.12-5.75.12C34.68,63.49,23.28,61.78,15,59a37.06,37.06,0,0,1-9-4.25V73.93c.53,2.49,4.59,5,10.89,7.11,7.05,2.35,16.61,3.88,27.31,4.13a42.92,42.92,0,0,0-.24,4.55c0,.44,0,.88,0,1.32Z"/>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-primary"
+                                                    th:onclick="|window.location.href='@{/controlDashboard/executeDocuments(id=${list.getId()})}'|">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor" class="bi bi-database-up" viewBox="0 0 16 16">
+                                                    <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0Z"/>
+                                                    <path d="M12.096 6.223A4.92 4.92 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.493 4.493 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.525 4.525 0 0 1-.813-.927C8.5 14.992 8.252 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.552 4.552 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10c.262 0 .52-.008.774-.024a4.525 4.525 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777ZM3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4Z"/>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-secondary"
+                                                    th:onclick="|window.location.href='@{/controlDashboard/findDocsError(id=${list.getId()})}'|">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- column -->
+            </div>
+            <div class="row">
+                <!-- column -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Срок исполнения до 10 дней</h4>
+                            <div>
+                                <h3><b>Функционал кнопок</b></h3>
+                                <button type="submit" class="btn btn-danger" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-trash2-fill"
+                                         viewBox="0 0 110.61 122.88">
+                                        <path d="M39.27,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Zm63.6-19.86L98,103a22.29,22.29,0,0,1-6.33,14.1,19.41,19.41,0,0,1-13.88,5.78h-45a19.4,19.4,0,0,1-13.86-5.78l0,0A22.31,22.31,0,0,1,12.59,103L7.74,38.78H0V25c0-3.32,1.63-4.58,4.84-4.58H27.58V10.79A10.82,10.82,0,0,1,38.37,0H72.24A10.82,10.82,0,0,1,83,10.79v9.62h23.35a6.19,6.19,0,0,1,1,.06A3.86,3.86,0,0,1,110.59,24c0,.2,0,.38,0,.57V38.78Zm-9.5.17H17.24L22,102.3a12.82,12.82,0,0,0,3.57,8.1l0,0a10,10,0,0,0,7.19,3h45a10.06,10.06,0,0,0,7.19-3,12.8,12.8,0,0,0,3.59-8.1L93.37,39ZM71,20.41V12.05H39.64v8.36ZM61.87,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Z"/>
+                                    </svg>
+                                    Удалить документ
+                                </button>
+                                <button type="button" class="btn btn-success" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         viewBox="0 0 120.09 122.88">
+                                        <path d="M16.83,25.39C24.55,28,35.28,29.55,47.2,29.55S69.86,28,77.57,25.39c6.77-2.26,11-5,11-7.68s-4.19-5.41-11-7.67C69.86,7.47,59.13,5.88,47.2,5.88S24.55,7.47,16.83,10c-14.36,4.8-14.75,10.42,0,15.35Zm70.1,31.17a33.09,33.09,0,0,1,23.44,9.71v0a33.12,33.12,0,0,1,0,46.86l0,0a33.12,33.12,0,0,1-46.86,0l0,0a33.12,33.12,0,0,1,0-46.86l0,0a33.06,33.06,0,0,1,23.43-9.71Zm1.88,17.52L86,88.12l-2.8-4.22c-6,2.42-9.42,6.42-9.92,12.56-5-8.66-1.95-16.43,4.33-21l-2.86-4.3,14,2.9Zm-4.49,32.13,2.76-14,2.81,4.22c6-2.42,9.42-6.42,9.92-12.56,5,8.66,2,16.43-4.33,21l2.86,4.3-14-2.9ZM106.7,70a28,28,0,1,0,8.19,19.77A27.84,27.84,0,0,0,106.7,70ZM43.92,91C32.69,90.77,22.55,89.12,15,86.6a37.06,37.06,0,0,1-9-4.26v19.18c.53,2.49,4.59,5,10.89,7.11,7.72,2.58,18.45,4.17,30.37,4.17,1.15,0,2.29,0,3.42,0a43.68,43.68,0,0,0,4.32,5.69q-3.78.22-7.74.22c-12.52,0-23.92-1.71-32.23-4.48-4.38-1.47-14.91-6.27-14.91-12V100.3C.06,74.09,0,43.92,0,17.71,0,12.23,5.72,7.58,15,4.49,23.28,1.71,34.68,0,47.2,0S71.12,1.71,79.43,4.49s13.92,6.92,14.84,11.77a2.93,2.93,0,0,1,.17,1V47.35a42.18,42.18,0,0,0-6.08-.64,2.77,2.77,0,0,0,.17-.93h0V26.62a37,37,0,0,1-9.13,4.32c-8.31,2.77-19.71,4.49-32.23,4.49S23.28,33.71,15,30.94a37.44,37.44,0,0,1-9-4.25V46.34c.53,2.49,4.59,5,10.89,7.11C24.55,56,35.28,57.62,47.2,57.62c4.08,0,8-.19,11.74-.54-.62.53-1.22,1.08-1.8,1.64-.22.18-.42.37-.62.56l0,0,0,0,0,0a43.9,43.9,0,0,0-3.55,4c-1.89.08-3.8.12-5.75.12C34.68,63.49,23.28,61.78,15,59a37.06,37.06,0,0,1-9-4.25V73.93c.53,2.49,4.59,5,10.89,7.11,7.05,2.35,16.61,3.88,27.31,4.13a42.92,42.92,0,0,0-.24,4.55c0,.44,0,.88,0,1.32Z"/>
+                                    </svg>
+                                    Обновить документ
+                                </button>
+                                <button type="button" class="btn btn-primary" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-database-up" viewBox="0 0 16 16">
+                                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0Z"/>
+                                        <path d="M12.096 6.223A4.92 4.92 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.493 4.493 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.525 4.525 0 0 1-.813-.927C8.5 14.992 8.252 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.552 4.552 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10c.262 0 .52-.008.774-.024a4.525 4.525 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777ZM3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4Z"/>
+                                    </svg>
+                                    Исполнить документ
+                                </button>
+                                <button type="button" class="btn btn-secondary" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                    </svg>
+                                    Перейти на документ
+                                </button>
+                            </div>
+                            <div class="table-responsive mt-5">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr class="table-primary">
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Корреспондент</th>
+                                        <th scope="col">Регистрационный номер</th>
+                                        <th scope="col">Дата</th>
+                                        <th scope="col">Автор резолюции</th>
+                                        <th scope="col">Содержание</th>
+                                        <th scope="col">Срок исполнения</th>
+                                        <th scope="col">Исполнитель</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="list: ${listControl}" class="text-dark">
+                                        <td th:text="${list.id}"/>
+                                        <td th:text="${list.correspondent}"/>
+                                        <td th:text="${list.reg_number}"/>
+                                        <td th:text="${list.dates}"/>
+                                        <td th:text="${list.author_resolution}"/>
+                                        <td th:text="${list.resolution}"/>
+                                        <td th:text="${list.data_plane}"/>
+                                        <td th:text="${list.executor}"/>
+                                        <td>
+                                            <form action="#"
+                                                  th:action="@{/controlDashboard/deleteDocs(id=${list.getId()})}"
+                                                  th:method="delete" style="display:inline-block">
+                                                <button type="submit" class="btn btn-danger">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-trash2-fill"
+                                                         viewBox="0 0 110.61 122.88">
+                                                        <path d="M39.27,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Zm63.6-19.86L98,103a22.29,22.29,0,0,1-6.33,14.1,19.41,19.41,0,0,1-13.88,5.78h-45a19.4,19.4,0,0,1-13.86-5.78l0,0A22.31,22.31,0,0,1,12.59,103L7.74,38.78H0V25c0-3.32,1.63-4.58,4.84-4.58H27.58V10.79A10.82,10.82,0,0,1,38.37,0H72.24A10.82,10.82,0,0,1,83,10.79v9.62h23.35a6.19,6.19,0,0,1,1,.06A3.86,3.86,0,0,1,110.59,24c0,.2,0,.38,0,.57V38.78Zm-9.5.17H17.24L22,102.3a12.82,12.82,0,0,0,3.57,8.1l0,0a10,10,0,0,0,7.19,3h45a10.06,10.06,0,0,0,7.19-3,12.8,12.8,0,0,0,3.59-8.1L93.37,39ZM71,20.41V12.05H39.64v8.36ZM61.87,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Z"/>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                            <button type="button" class="btn btn-success"
+                                                    th:onclick="|window.location.href='@{/controlDashboard/updateDocuments(id=${list.getId()})}'|">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     viewBox="0 0 120.09 122.88">
+                                                    <path d="M16.83,25.39C24.55,28,35.28,29.55,47.2,29.55S69.86,28,77.57,25.39c6.77-2.26,11-5,11-7.68s-4.19-5.41-11-7.67C69.86,7.47,59.13,5.88,47.2,5.88S24.55,7.47,16.83,10c-14.36,4.8-14.75,10.42,0,15.35Zm70.1,31.17a33.09,33.09,0,0,1,23.44,9.71v0a33.12,33.12,0,0,1,0,46.86l0,0a33.12,33.12,0,0,1-46.86,0l0,0a33.12,33.12,0,0,1,0-46.86l0,0a33.06,33.06,0,0,1,23.43-9.71Zm1.88,17.52L86,88.12l-2.8-4.22c-6,2.42-9.42,6.42-9.92,12.56-5-8.66-1.95-16.43,4.33-21l-2.86-4.3,14,2.9Zm-4.49,32.13,2.76-14,2.81,4.22c6-2.42,9.42-6.42,9.92-12.56,5,8.66,2,16.43-4.33,21l2.86,4.3-14-2.9ZM106.7,70a28,28,0,1,0,8.19,19.77A27.84,27.84,0,0,0,106.7,70ZM43.92,91C32.69,90.77,22.55,89.12,15,86.6a37.06,37.06,0,0,1-9-4.26v19.18c.53,2.49,4.59,5,10.89,7.11,7.72,2.58,18.45,4.17,30.37,4.17,1.15,0,2.29,0,3.42,0a43.68,43.68,0,0,0,4.32,5.69q-3.78.22-7.74.22c-12.52,0-23.92-1.71-32.23-4.48-4.38-1.47-14.91-6.27-14.91-12V100.3C.06,74.09,0,43.92,0,17.71,0,12.23,5.72,7.58,15,4.49,23.28,1.71,34.68,0,47.2,0S71.12,1.71,79.43,4.49s13.92,6.92,14.84,11.77a2.93,2.93,0,0,1,.17,1V47.35a42.18,42.18,0,0,0-6.08-.64,2.77,2.77,0,0,0,.17-.93h0V26.62a37,37,0,0,1-9.13,4.32c-8.31,2.77-19.71,4.49-32.23,4.49S23.28,33.71,15,30.94a37.44,37.44,0,0,1-9-4.25V46.34c.53,2.49,4.59,5,10.89,7.11C24.55,56,35.28,57.62,47.2,57.62c4.08,0,8-.19,11.74-.54-.62.53-1.22,1.08-1.8,1.64-.22.18-.42.37-.62.56l0,0,0,0,0,0a43.9,43.9,0,0,0-3.55,4c-1.89.08-3.8.12-5.75.12C34.68,63.49,23.28,61.78,15,59a37.06,37.06,0,0,1-9-4.25V73.93c.53,2.49,4.59,5,10.89,7.11,7.05,2.35,16.61,3.88,27.31,4.13a42.92,42.92,0,0,0-.24,4.55c0,.44,0,.88,0,1.32Z"/>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-primary"
+                                                    th:onclick="|window.location.href='@{/controlDashboard/executeDocuments(id=${list.getId()})}'|">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor" class="bi bi-database-up" viewBox="0 0 16 16">
+                                                    <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0Z"/>
+                                                    <path d="M12.096 6.223A4.92 4.92 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.493 4.493 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.525 4.525 0 0 1-.813-.927C8.5 14.992 8.252 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.552 4.552 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10c.262 0 .52-.008.774-.024a4.525 4.525 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777ZM3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4Z"/>
+                                                </svg>
+                                            </button>
+                                            <button type="button" class="btn btn-secondary"
+                                                    th:onclick="|window.location.href='@{/controlDashboard/findDocs(id=${list.getId()})}'|">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- column -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- Table -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Table -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Recent blogss -->
+            <!-- ============================================================== -->
+            <!--            <div class="row justify-content-center">-->
+            <!--                &lt;!&ndash; Column &ndash;&gt;-->
+            <!--                <div class="col-lg-4 col-md-6">-->
+            <!--                    <div class="card">-->
+            <!--                        <img class="card-img-top img-responsive" src="assets/images/big/img1.jpg" alt="Card">-->
+            <!--                        <div class="card-body">-->
+            <!--                            <ul class="list-inline d-flex align-items-center">-->
+            <!--                                <li class="ps-0">20 May 2021</li>-->
+            <!--                                <li class="ms-auto"><a href="javascript:void(0)" class="link">3 Comment</a></li>-->
+            <!--                            </ul>-->
+            <!--                            <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                &lt;!&ndash; Column &ndash;&gt;-->
+            <!--                &lt;!&ndash; Column &ndash;&gt;-->
+            <!--                <div class="col-lg-4 col-md-6">-->
+            <!--                    <div class="card">-->
+            <!--                        <img class="card-img-top img-responsive" src="assets/images/big/img2.jpg" alt="Card">-->
+            <!--                        <div class="card-body">-->
+            <!--                            <ul class="list-inline d-flex align-items-center">-->
+            <!--                                <li class="ps-0">20 May 2021</li>-->
+            <!--                                <li class="ms-auto"><a href="javascript:void(0)" class="link">3 Comment</a></li>-->
+            <!--                            </ul>-->
+            <!--                            <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                &lt;!&ndash; Column &ndash;&gt;-->
+            <!--                &lt;!&ndash; Column &ndash;&gt;-->
+            <!--                <div class="col-lg-4 col-md-6">-->
+            <!--                    <div class="card">-->
+            <!--                        <img class="card-img-top img-responsive" src="assets/images/big/img4.jpg" alt="Card">-->
+            <!--                        <div class="card-body">-->
+            <!--                            <ul class="list-inline d-flex align-items-center">-->
+            <!--                                <li class="ps-0">20 May 2021</li>-->
+            <!--                                <li class="ms-auto"><a href="javascript:void(0)" class="link">3 Comment</a></li>-->
+            <!--                            </ul>-->
+            <!--                            <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                &lt;!&ndash; Column &ndash;&gt;-->
+            <!--            </div>-->
+            <!-- ============================================================== -->
+            <!-- Recent blogss -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            © 2023 Контроль документов - права программы на Корниченко С.В.
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="assets/plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app-style-switcher.js"></script>
+<!--Wave Effects -->
+<script src="js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="js/custom.js"></script>
+<!--This page JavaScript -->
+<!--flot chart-->
+<script src="assets/plugins/flot/jquery.flot.js"></script>
+<script src="assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="js/pages/dashboards/dashboard1.js"></script>
+</body>
+
+</html>
