@@ -54,9 +54,9 @@ public class AdminController {
         List<Users> users1 = usersRepository.findByLogin(users);
         var address = request.getRemoteAddr();
         var people = users1.get(0).getIp();
-//        if (!people.equals(address)) {
-//            return new ModelAndView("redirect:/adminDashboard/error");
-//        }
+        if (!people.equals(address)) {
+            return new ModelAndView("redirect:/adminDashboard/error");
+        }
         LocalDate localDate = LocalDate.now().plusDays(10);
         LocalDate localDate1 = LocalDate.now();
         mav.addObject("people", users1.get(0).getPerson());

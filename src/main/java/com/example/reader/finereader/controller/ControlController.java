@@ -41,9 +41,9 @@ public class ControlController {
         List<Users> users1 = usersRepository.findByLogin(users);
         var address = request.getRemoteAddr();
         var people = users1.get(0).getIp();
-//        if (!people.equals(address)) {
-//            return new ModelAndView("redirect:/controlDashboard/error");
-//        }
+        if (!people.equals(address)) {
+            return new ModelAndView("redirect:/controlDashboard/error");
+        }
         LocalDate localDate = LocalDate.now().plusDays(10);
         LocalDate localDate1 = LocalDate.now();
         mav.addObject("people", users1.get(0).getPerson());
@@ -55,8 +55,8 @@ public class ControlController {
         mav.addObject("finderIPBlack", new DeniedBlack());
         mav.addObject("findControl", new Control());
         mav.addObject("countControl", controlRepository.count());
-        mav.addObject("countNowControl", controlRepository.findByStatus(localDate).stream().count());
-        mav.addObject("countErrorControl", controlRepository.findByStatusError(localDate1).stream().count());
+        mav.addObject("countNowControl", (long) controlRepository.findByStatus(localDate).size());
+        mav.addObject("countErrorControl", (long) controlRepository.findByStatusError(localDate1).size());
         return mav;
     }
 
@@ -91,8 +91,8 @@ public class ControlController {
         mav.addObject("finderIPBlack", new DeniedBlack());
         mav.addObject("findControl", new Control());
         mav.addObject("countControl", controlRepository.count());
-        mav.addObject("countNowControl", controlRepository.findByStatus(localDate).stream().count());
-        mav.addObject("countErrorControl", controlRepository.findByStatusError(localDate1).stream().count());
+        mav.addObject("countNowControl", (long) controlRepository.findByStatus(localDate).size());
+        mav.addObject("countErrorControl", (long) controlRepository.findByStatusError(localDate1).size());
         return mav;
     }
 
@@ -114,8 +114,8 @@ public class ControlController {
         mav.addObject("finderIPBlack", new DeniedBlack());
         mav.addObject("findControl", new Control());
         mav.addObject("countControl", controlRepository.count());
-        mav.addObject("countNowControl", controlRepository.findByStatus(localDate).stream().count());
-        mav.addObject("countErrorControl", controlRepository.findByStatusError(localDate1).stream().count());
+        mav.addObject("countNowControl", (long) controlRepository.findByStatus(localDate).size());
+        mav.addObject("countErrorControl", (long) controlRepository.findByStatusError(localDate1).size());
         return mav;
     }
 
