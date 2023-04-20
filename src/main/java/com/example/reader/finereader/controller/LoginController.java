@@ -2,6 +2,7 @@ package com.example.reader.finereader.controller;
 
 import com.example.reader.finereader.entities.DeniedBlack;
 import com.example.reader.finereader.repository.DeniedBlackRepository;
+import com.example.reader.finereader.repository.DeniedWhiteRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,18 +26,21 @@ public class LoginController {
     @Autowired
     private DeniedBlackRepository deniedBlackRepository;
 
+    @Autowired
+    private DeniedWhiteRepository deniedWhiteRepository;
+
     @GetMapping
-    public ModelAndView startsApp(HttpServletRequest request) {
+    public ModelAndView startsApp() {
             return new ModelAndView("redirect:/login");
     }
 
     @GetMapping("/login")
     public ModelAndView startsAppLogin(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("index");
-//        var address = request.getRemoteAddr();
-//        if (deniedWhiteRepository.findByIP(address).size() == 0){
-//            return new ModelAndView("redirect:/authorization");
-//        }
+        var address = request.getRemoteAddr();
+        if (deniedWhiteRepository.findByIP(address).size() == 0){
+            return new ModelAndView("redirect:/authorization");
+        }
         return mav;
     }
 

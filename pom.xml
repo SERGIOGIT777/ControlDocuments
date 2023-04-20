@@ -9,13 +9,13 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example.reader</groupId>
-    <artifactId>FineReader</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>Control</artifactId>
+    <version>DOC</version>
     <packaging>war</packaging>
     <name>FineReader</name>
     <description>FineReader</description>
     <properties>
-        <java.version>19</java.version>
+        <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>

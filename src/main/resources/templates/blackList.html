@@ -17,22 +17,26 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
-                <h2 class="heading-section">Ресурс контроля поставленных сроков</h2>
+                <h2 class="heading-section">Добро пожаловать</h2>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 <div class="wrap d-md-flex">
-                    <div class="img" style="background-image: url(loginPage/images/auth.png);">
+                    <div class="img" style="background-image: url(loginPage/images/auth1.png);
+                    background-repeat: no-repeat;
+                    width: 25%;
+                    height: 25%;
+                    background-position:center;">
                     </div>
                     <div class="login-wrap p-4 p-md-5">
                         <div class="d-flex">
                             <div class="w-100">
-                                <h3 class="mb-4">Авторизация</h3>
+                                <h3 class="mb-4" align="center">Авторизация</h3>
                             </div>
                         </div>
                         <form action="#" class="signin-form" th:action="@{/authorization}" method="post"
-                        th:object="${addDenied}">
+                              th:object="${addDenied}">
                             <div class="form-group mb-3">
                                 <input type="hidden" class="form-control" name="ip" th:value="*{ip}">
                             </div>
