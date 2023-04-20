@@ -18,8 +18,11 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-    @Autowired
-    private DataSource dataSource;
+    private final DataSource dataSource;
+
+    public WebSecurityConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
@@ -60,7 +63,7 @@ public class WebSecurityConfig {
                     .loginProcessingUrl("/perform-login")
                     .usernameParameter("login")
                     .passwordParameter("pass")
-                    .defaultSuccessUrl("/userDashboard/profile")
+                    .defaultSuccessUrl("/controlDashboard/dashboard")
                     .permitAll()
                 .and()
                     .logout()

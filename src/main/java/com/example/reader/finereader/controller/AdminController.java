@@ -54,9 +54,9 @@ public class AdminController {
         List<Users> users1 = usersRepository.findByLogin(users);
         var address = request.getRemoteAddr();
         var people = users1.get(0).getIp();
-        if (!people.equals(address)) {
-            return new ModelAndView("redirect:/adminDashboard/error");
-        }
+//        if (!people.equals(address)) {
+//            return new ModelAndView("redirect:/adminDashboard/error");
+//        }
         LocalDate localDate = LocalDate.now().plusDays(10);
         LocalDate localDate1 = LocalDate.now();
         mav.addObject("people", users1.get(0).getPerson());
@@ -71,8 +71,8 @@ public class AdminController {
         mav.addObject("findControl", new Control());
         mav.addObject("countUsers", usersRepository.count());
         mav.addObject("countControl", controlRepository.count());
-        mav.addObject("countNowControl", controlRepository.findByStatus(localDate).stream().count());
-        mav.addObject("countErrorControl", controlRepository.findByStatusError(localDate1).stream().count());
+        mav.addObject("countNowControl", (long) controlRepository.findByStatus(localDate).size());
+        mav.addObject("countErrorControl", (long) controlRepository.findByStatusError(localDate1).size());
         mav.addObject("countDeniedWhite", deniedWhiteRepository.count());
         mav.addObject("countDeniedBlack", deniedBlackRepository.count());
         return mav;
@@ -128,8 +128,8 @@ public class AdminController {
         mav.addObject("findControl", new Control());
         mav.addObject("countUsers", usersRepository.count());
         mav.addObject("countControl", controlRepository.count());
-        mav.addObject("countNowControl", controlRepository.findByStatus(localDate).stream().count());
-        mav.addObject("countErrorControl", controlRepository.findByStatusError(localDate1).stream().count());
+        mav.addObject("countNowControl", (long) controlRepository.findByStatus(localDate).size());
+        mav.addObject("countErrorControl", (long) controlRepository.findByStatusError(localDate1).size());
         mav.addObject("countDeniedWhite", deniedWhiteRepository.count());
         mav.addObject("countDeniedBlack", deniedBlackRepository.count());
         return mav;
@@ -156,8 +156,8 @@ public class AdminController {
         mav.addObject("findControl", new Control());
         mav.addObject("countUsers", usersRepository.count());
         mav.addObject("countControl", controlRepository.count());
-        mav.addObject("countNowControl", controlRepository.findByStatus(localDate).stream().count());
-        mav.addObject("countErrorControl", controlRepository.findByStatusError(localDate1).stream().count());
+        mav.addObject("countNowControl", (long) controlRepository.findByStatus(localDate).size());
+        mav.addObject("countErrorControl", (long) controlRepository.findByStatusError(localDate1).size());
         mav.addObject("countDeniedWhite", deniedWhiteRepository.count());
         mav.addObject("countDeniedBlack", deniedBlackRepository.count());
         return mav;
@@ -317,7 +317,7 @@ public class AdminController {
         if (list.size() > 0) {
             model.addAttribute("loginError", "Пользователь с таким логином уже существует");
             return "adminDashboard/regUsers";
-        } else if (list.isEmpty()) {
+        } else {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             users.setPassword(passwordEncoder.encode(users.getPassword()));
             usersRepository.save(users);

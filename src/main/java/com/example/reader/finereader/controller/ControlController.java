@@ -42,7 +42,7 @@ public class ControlController {
         var address = request.getRemoteAddr();
         var people = users1.get(0).getIp();
 //        if (!people.equals(address)) {
-//            return new ModelAndView("redirect:/adminDashboard/error");
+//            return new ModelAndView("redirect:/controlDashboard/error");
 //        }
         LocalDate localDate = LocalDate.now().plusDays(10);
         LocalDate localDate1 = LocalDate.now();
